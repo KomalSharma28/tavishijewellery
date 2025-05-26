@@ -1,0 +1,302 @@
+:root {
+    --emerald: #046c4e;
+    --emerald-light: #0e9b74;
+    --emerald-dark: #034634;
+    --gold: #e6c200;
+    --white: #fff;
+    --gray: #f7f7f7;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: var(--gray);
+    color: var(--emerald-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+/* Boot Animation */
+#boot {
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.7s;
+}
+#boot .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    letter-spacing: 8px;
+    animation: fadeInScale 1.5s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
+}
+#boot .loader {
+    margin-top: 30px;
+    width: 60px;
+    height: 60px;
+    border: 6px solid var(--gold);
+    border-top: 6px solid var(--emerald-light);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes fadeInScale {
+    0% { opacity: 0.7; transform: scale(1);}
+    100% { opacity: 1; transform: scale(1.12);}
+}
+@keyframes spin {
+    0% { transform: rotate(0);}
+    100% { transform: rotate(360deg);}
+}
+/* Header */
+header {
+    background: var(--emerald);
+    color: var(--gold);
+    padding: 32px 0 18px 0;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    position: relative;
+}
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    letter-spacing: 6px;
+    margin-bottom: 8px;
+}
+header nav {
+    margin-top: 18px;
+}
+header nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 22px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+    position: relative;
+}
+header nav a:after {
+    content: '';
+    display: block;
+    margin: 0 auto;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width .3s;
+}
+header nav a:hover:after, header nav a.active:after {
+    width: 80%;
+}
+header nav a:hover, header nav a.active {
+    color: var(--gold);
+}
+/* Hero Section */
+.hero {
+    background: linear-gradient(120deg, var(--emerald-dark) 60%, var(--emerald-light) 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 90px 20px 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+.hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.7rem;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+    animation: fadeInUp 1.2s;
+}
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    animation: fadeInUp 1.7s;
+}
+.hero .cta {
+    background: var(--gold);
+    color: var(--emerald-dark);
+    padding: 14px 38px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+    transition: background 0.2s, color 0.2s;
+    animation: fadeInUp 2s;
+}
+.hero .cta:hover {
+    background: var(--emerald-light);
+    color: var(--white);
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+/* Jewels Showcase */
+.showcase {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 38px;
+    margin: 60px auto 40px auto;
+    max-width: 1200px;
+}
+.jewel-card {
+    background: var(--white);
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(4,108,78,0.07);
+    width: 320px;
+    padding: 28px 20px 22px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.18s, box-shadow 0.18s;
+    cursor: pointer;
+    animation: jewelPop 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.jewel-card:hover {
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 12px 32px rgba(4,108,78,0.13);
+}
+.jewel-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 18px;
+    transition: transform 0.4s;
+}
+.jewel-card:hover img {
+    transform: scale(1.13) rotate(-8deg);
+}
+.jewel-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--emerald);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+.jewel-card p {
+    color: #444;
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+.jewel-card .price {
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+@keyframes jewelPop {
+    0% { opacity: 0; transform: scale(0.8);}
+    100% { opacity: 1; transform: scale(1);}
+}
+/* Customer Service Section */
+.customer-service {
+    background: var(--emerald);
+    color: var(--white);
+    padding: 60px 20px 50px 20px;
+    text-align: center;
+    border-radius: 0 0 40px 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 18px rgba(4,108,78,0.09);
+    position: relative;
+}
+.customer-service h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 2.1rem;
+    margin-bottom: 18px;
+}
+.customer-service .service-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 38px;
+    margin-top: 24px;
+}
+.service-card {
+    background: var(--emerald-light);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 28px 30px;
+    min-width: 220px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    transition: background 0.2s, transform 0.18s;
+    cursor: pointer;
+    font-size: 1.07rem;
+}
+.service-card:hover {
+    background: var(--gold);
+    color: var(--emerald-dark);
+    transform: scale(1.06);
+}
+.service-card i {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    display: block;
+}
+/* Contact Section */
+.contact-section {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    background: #fff;
+    padding: 32px 22px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(4,108,78,0.08);
+    text-align: center;
+}
+.contact-section h2 {
+    color: #046c4e;
+}
+.contact-section form {
+    margin-top: 18px;
+}
+.contact-section input[type="email"],
+.contact-section textarea {
+    padding: 10px;
+    width: 60%;
+    max-width: 320px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    resize: vertical;
+}
+.contact-section textarea {
+    height: 80px;
+}
+.contact-section button {
+    background: #046c4e;
+    color: #fff;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+.contact-section button:hover {
+    background: #034634;
+}
+/* Footer */
+footer {
+    background: var(--emerald-dark);
+    color: var(--gold);
+    text-align: center;
+    padding: 22px 0 18px 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+/* Responsive */
+@media (max-width: 900px) {
+    .showcase { gap: 20px; }
+    .jewel-card { width: 90vw; max-width: 340px; }
+    .customer-service .service-options { gap: 18px; }
+}
+@media (max-width: 700px) {
+    header h1 { font-size: 2rem; }
+    .hero h2 { font-size: 1.5rem; }
+    .showcase { flex-direction: column; align-items: center; }
+    .customer-service .service-options { flex-direction: column; align-items: center; }
+}
